@@ -4,6 +4,7 @@
   width: 100%;
   min-height: 150px;
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
 }
 
@@ -12,7 +13,7 @@
 }
 
 .overlay {
-  background: linear-gradient(90deg, rgba(40,44,52,1) 30%, rgba(40,44,52,0.66) 75%, rgba(40,44,52,0.33) 91%, rgba(0,0,0,0) 100%);
+  background: linear-gradient(90deg, rgba(31,31,61,1) 30%, rgba(31,31,61,0.66) 75%, rgba(31,31,61,0.33) 91%, rgba(0,0,0,0) 100%);
   position: absolute;
   top: 0;
   left: 0;
@@ -24,7 +25,7 @@ input {
   background-color: transparent;
   color: white;
   box-shadow: none;
-  border: 1px solid lightslategray;
+  border: 1px solid #343454;
   font-size: 40px;
   height: 80px;
   width: 80%;
@@ -38,11 +39,21 @@ textarea:focus, input:focus{
 }
 
 p {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  margin-bottom: 0px;
+  margin-top: 4px;
   z-index: 99;
 }
 
+h1 {
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;
+  letter-spacing: 1px;
+}
+
 body {
-  background-color: #282c34;
+  background-color: #1F1F3D;
   color: white;
   display: flex;
   align-items: center;
@@ -51,3 +62,39 @@ body {
   width: 60vw;
   margin: 0 auto;
 }
+
+.text-container {
+  color: #A2A2C3;
+  opacity: 1;
+  text-align: center;
+  margin-bottom: 30px;
+  max-height: 150px;
+  width: 100%;
+  z-index: 99;  
+}
+
+.text-container.invisible {
+  max-height: 0;
+  opacity: 0;
+  margin-bottom: 0;
+  animation: fadeText 1s;
+}
+
+@keyframes fadeText {
+  0% {
+    opacity: 1;
+    margin-bottom: 30px;
+    max-height: 150px;
+  }
+
+  33% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 0;
+    margin-bottom: 0;
+    max-height: 0;
+  }
+}
+
