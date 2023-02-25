@@ -37,6 +37,10 @@ textarea:focus, input:focus{
     outline: none;
 }
 
+p {
+  z-index: 99;
+}
+
 body {
   background-color: #282c34;
   color: white;
