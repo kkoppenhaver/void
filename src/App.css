@@ -98,6 +98,7 @@ body.light .text-container {
   opacity: 0;
   margin-bottom: 0;
   animation: fadeText 1s;
+  pointer-events: none;
 }
 
 .mode-toggle {
@@ -137,6 +138,14 @@ body.light .text-container {
 }
 
 @media screen and (max-width: 500px) {
+  .App {
+    height: 80vh;
+  }
+
+  .overlay {
+    width: 40%;
+  }
+
   .app-container {
     position: absolute;
     top: 100px;
