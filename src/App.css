@@ -152,7 +152,11 @@ body.light .text-container {
     text-align: center;
     left: 0;
     right: 0;
-  }    
+  } 
+
+  p {
+    margin-bottom: 8px;
+  }   
 }
 
 @keyframes fadeText {
