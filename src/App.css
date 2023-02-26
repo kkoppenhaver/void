@@ -6,6 +6,9 @@
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+
+  height: 100vh;
+  width: 100vw;
 }
 
 #root {
@@ -21,17 +24,26 @@
   height: 100%;
 }
 
+body.light .overlay {
+  background: linear-gradient(90deg, rgba(255,255,255,1) 30%, rgba(255,255,255,0.66) 75%, rgba(255,255,255,0.33) 91%, rgba(0,0,0,0) 100%);
+}
+
 input {
   background-color: transparent;
   color: white;
   box-shadow: none;
   border: 1px solid #343454;
+  font-family: 'Inter', sans-serif;
   font-size: 40px;
   height: 80px;
   width: 80%;
   text-align: right;
   padding-right: 20px;
   width: 100%;
+}
+
+body.light input {
+  color: #1F1F3D;
 }
 
 textarea:focus, input:focus{
@@ -58,9 +70,13 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100vh;
-  width: 60vw;
   margin: 0 auto;
+
+  transition: 0.2s background-color linear;
+}
+
+body.light {
+  background-color: white;
 }
 
 .text-container {
@@ -73,11 +89,51 @@ body {
   z-index: 99;  
 }
 
+body.light .text-container {
+  color: #1F1F3D;
+}
+
 .text-container.invisible {
   max-height: 0;
   opacity: 0;
   margin-bottom: 0;
   animation: fadeText 1s;
+}
+
+.mode-toggle {
+  cursor: pointer;
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  max-width: 30px;
+}
+
+.mode-toggle svg {
+  width: 100%;
+}
+
+.dark .mode-toggle g {
+  fill: white;
+}
+
+.light .mode-toggle g {
+  fill: #1F1F3D;
+}
+
+.dark .mode-toggle .light {
+  display: none;
+}
+
+.app-container {
+  max-height: 500px;
+  position: relative;
+
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  max-width: 80%;
+  margin: 0 auto;
 }
 
 @keyframes fadeText {
@@ -87,7 +143,7 @@ body {
     max-height: 150px;
   }
 
-  33% {
+  25% {
     opacity: 0;
   }
 
