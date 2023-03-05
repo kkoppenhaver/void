@@ -1,11 +1,15 @@
 import './App.css';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
+
+import Rodal from 'rodal';
+import 'rodal/lib/rodal.css';
 
 function App() {
   const [voidText, setVoidText] = useState('');
 
   const [explainerTextShown, setExplainerTextShown] = useState(false);
   const [theme, setTheme] = useState('dark');
+  const [helpModal, setHelpModal] = useState(false);
 
   const toggleTheme = () => {
     if (theme === 'light') {
@@ -14,6 +18,14 @@ function App() {
       setTheme('light');
     }
   };
+
+  const showHelpModal = () =>{
+    setHelpModal(true);
+  }
+
+  const hideHelpModal = () =>{
+     setHelpModal(false);
+  }
 
   function maybeTrimText(event) {
     let textInput = event.target.value;
@@ -31,8 +43,30 @@ function App() {
     document.body.className = theme;
   }, [theme]);
 
+  const handleKeyPress = useCallback((event) => {
+    if( 'Escape' === event.key ) {
+      setHelpModal(false);
+    }
+
+    console.log(`Key pressed: ${event.key}`);
+  }, []);
+
+  useEffect(() => {
+    // attach the event listener
+    document.addEventListener('keydown', handleKeyPress);
+
+    // remove the event listener
+    return () => {
+      document.removeEventListener('keydown', handleKeyPress);
+    };
+  }, [handleKeyPress]);
+
   return (
     <div className="App">
+
+      <div className="help-toggle" onClick={showHelpModal}>
+        <svg width="1792" height="1792" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1024 1376v-192q0-14-9-23t-23-9h-192q-14 0-23 9t-9 23v192q0 14 9 23t23 9h192q14 0 23-9t9-23zm256-672q0-88-55.5-163t-138.5-116-170-41q-243 0-371 213-15 24 8 42l132 100q7 6 19 6 16 0 25-12 53-68 86-92 34-24 86-24 48 0 85.5 26t37.5 59q0 38-20 61t-68 45q-63 28-115.5 86.5t-52.5 125.5v36q0 14 9 23t23 9h192q14 0 23-9t9-23q0-19 21.5-49.5t54.5-49.5q32-18 49-28.5t46-35 44.5-48 28-60.5 12.5-81zm384 192q0 209-103 385.5t-279.5 279.5-385.5 103-385.5-103-279.5-279.5-103-385.5 103-385.5 279.5-279.5 385.5-103 385.5 103 279.5 279.5 103 385.5z"/></svg>
+      </div>
       
       <div className="mode-toggle" onClick={toggleTheme}>
         <svg viewBox="0 0 100 100">
@@ -61,6 +95,10 @@ function App() {
         <div className="overlay"></div>
         <input autoFocus value={voidText} className="void-input" type="text" onChange={maybeTrimText} />
       </div>
+
+      <Rodal visible={helpModal} onClose={hideHelpModal}>
+        <div>Content</div>
+      </Rodal>
     </div>
   );
 }

@@ -109,10 +109,6 @@ body.light .text-container {
   max-width: 30px;
 }
 
-.mode-toggle svg {
-  width: 100%;
-}
-
 .dark .mode-toggle g {
   fill: white;
 }
@@ -123,6 +119,28 @@ body.light .text-container {
 
 .dark .mode-toggle .light {
   display: none;
+}
+
+.mode-toggle svg, .help-toggle svg {
+  height: 100%;
+  width: 100%;
+}
+
+.help-toggle {
+  cursor: pointer;
+  position: absolute;
+  top: 35px;
+  right: 80px;
+  max-height: 30px;
+  max-width: 26px;
+}
+
+.dark .help-toggle path {
+  fill: white;
+}
+
+.light .help-toggle path {
+  fill: #1F1F3D;
 }
 
 .app-container {
