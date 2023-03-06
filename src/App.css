@@ -177,6 +177,27 @@ body.light .text-container {
   }   
 }
 
+.dark .rodal-dialog {
+  border: 1px solid #343454;
+  background-color: #1F1F3D;
+}
+
+.light .rodal-dialog {
+  border: 1px solid #343454;
+  background-color: white;
+  color: #1F1F3D;
+}
+
+.rodal-dialog {
+  display: flex;
+  align-items: center;
+}
+
+.rodal-dialog p {
+  margin-bottom: 10px;
+}
+
+
 @keyframes fadeText {
   0% {
     opacity: 1;

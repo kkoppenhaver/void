@@ -48,7 +48,9 @@ function App() {
       setHelpModal(false);
     }
 
-    console.log(`Key pressed: ${event.key}`);
+    if( 'Enter' === event.key ) {
+      setVoidText(''); 
+    }
   }, []);
 
   useEffect(() => {
@@ -96,8 +98,14 @@ function App() {
         <input autoFocus value={voidText} className="void-input" type="text" onChange={maybeTrimText} />
       </div>
 
-      <Rodal visible={helpModal} onClose={hideHelpModal}>
-        <div>Content</div>
+      <Rodal visible={helpModal} onClose={hideHelpModal} width='600'>
+        <div className="text-container">
+          <p>This is The Void.</p> 
+          <p>A place for your thoughts or whatever else you need to let out.</p>
+          <p>Anything you type here disappears as you type. It's not saved anywhere and you can't go back and judge yourself for anything you've written.</p>
+          <p>Your text will start to disappear automatically as you continue typing or you can use the Enter key to clear everything at once.</p>
+          <p>I hope The Void can be as helpful to you as it has been to me.</p>
+        </div>
       </Rodal>
     </div>
   );
