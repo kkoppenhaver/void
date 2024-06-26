@@ -98,7 +98,7 @@ function App() {
         <input autoFocus value={voidText} className="void-input" type="text" onChange={maybeTrimText} />
       </div>
 
-      <Rodal visible={helpModal} onClose={hideHelpModal} width='600'>
+      <Rodal visible={helpModal} onClose={hideHelpModal} customStyles={{ height: 'auto', minHeight: '300px', bottom: 'auto', top: 'auto', top: '50%', transform: 'translateY(-50%)', paddingTop: '50px' }}>
         <div className="text-container">
           <p>This is The Void.</p> 
           <p>A place for your thoughts or whatever else you need to let out.</p>
