@@ -32,7 +32,7 @@ function App() {
 
     setExplainerTextShown(true);
 
-    if( textInput.length > 45 ) {
+    if( textInput.length > 90 ) {
       textInput = textInput.slice(1);
     }
 
